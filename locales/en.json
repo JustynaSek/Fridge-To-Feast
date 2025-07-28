@@ -1,0 +1,369 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "close": "Close",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "clear": "Clear",
+    "clearAll": "Clear All",
+    "remove": "Remove",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "submit": "Submit",
+    "confirm": "Confirm",
+    "yes": "Yes",
+    "no": "No",
+    "text": "Text",
+    "photos": "Photos",
+    "language": "English"
+  },
+  "header": {
+    "title": "Fridge to Feast",
+    "subtitle": "AI-powered recipe generator",
+    "savedRecipes": "Saved Recipes",
+    "preferences": "Preferences",
+    "language": "Language"
+  },
+  "home": {
+    "hero": {
+      "title": "Quick Recipes from What You Have",
+      "titleHighlight": "",
+      "subtitle": "Upload photos of your fridge or type in ingredients. Get personalized recipes in seconds!"
+    },
+    "footer": {
+      "copyright": "© 2024 Fridge to Feast. Made with ❤️ for food lovers."
+    }
+  },
+  "input": {
+    "text": {
+      "title": "What's in your kitchen?",
+      "subtitle": "List your ingredients and we'll create delicious recipes for you",
+      "placeholder": "Enter an ingredient (e.g., chicken, onion, potato)",
+      "addButton": "Add",
+      "ingredientsList": "Your Ingredients",
+      "clearAll": "Clear All",
+      "generateButton": "Generate Recipes",
+      "generating": "Generating Recipes...",
+      "clickToGenerate": "Click \"Generate Recipes\" to create personalized meal suggestions"
+    },
+    "image": {
+      "title": "Snap a photo of your ingredients",
+      "subtitle": "Don't see your ingredients? Add them manually below.",
+      "uploadTitle": "Upload Images",
+      "dropTitle": "Drop your images here",
+      "dragDropText": "Drag and drop images here, or",
+      "browseFiles": "browse files",
+      "fileInfo": "Supports JPG, PNG, GIF • Max 25MB per file • Up to {maxFiles} images",
+      "processing": "Processing images...",
+      "selectedImages": "Selected Images",
+      "detectButton": "Detect Ingredients",
+      "detecting": "Detecting Ingredients...",
+      "reviewTitle": "Review & Edit Ingredients",
+      "addIngredient": "Add ingredient",
+      "addButton": "Add",
+      "generateFromDetected": "Generate Recipes from Detected Ingredients"
+    }
+  },
+  "recipes": {
+    "loading": "Creating your recipes...",
+    "noRecipes": "No recipes found",
+    "noRecipesText": "Try adding more ingredients or adjusting your preferences",
+    "actions": {
+      "save": "Save Recipe",
+      "saved": "Recipe saved!",
+      "share": "Share Recipe",
+      "shared": "Recipe shared!",
+      "print": "Print Recipe",
+      "printed": "Print dialog opened!",
+      "failed": "Failed"
+    },
+    "sections": {
+      "ingredients": "Ingredients",
+      "instructions": "Instructions",
+      "prepTime": "Prep Time",
+      "cookTime": "Cook Time"
+    }
+  },
+  "preferences": {
+    "title": "Cooking Preferences",
+    "subtitle": "Customize your recipe generation",
+    "tabs": {
+      "health": "Health & Diet",
+      "taste": "Taste & Style",
+      "cooking": "Cooking Skills",
+      "equipment": "Kitchen Setup",
+      "meals": "Meal Planning",
+      "dietary": "Dietary",
+      "preferences": "Preferences"
+    },
+    "dietary": {
+      "title": "Dietary Restrictions",
+      "healthConditions": "Health Conditions",
+      "allergies": "Allergies & Intolerances",
+      "allergiesTitle": "Allergies & Intolerances",
+      "restrictionsTitle": "Dietary Restrictions",
+      "conditions": {
+        "diabetes": "Diabetes",
+        "heartDisease": "Heart Disease",
+        "highBloodPressure": "High Blood Pressure",
+        "celiacDisease": "Celiac Disease",
+        "lactoseIntolerance": "Lactose Intolerance",
+        "ibs": "IBS",
+        "kidneyDisease": "Kidney Disease"
+      },
+      "restrictions": {
+        "vegetarian": "Vegetarian",
+        "vegan": "Vegan",
+        "pescatarian": "Pescatarian",
+        "keto": "Keto",
+        "paleo": "Paleo",
+        "lowCarb": "Low-Carb",
+        "glutenFree": "Gluten-Free",
+        "dairyFree": "Dairy-Free"
+      },
+      "allergyOptions": {
+        "nuts": "Nuts",
+        "shellfish": "Shellfish",
+        "eggs": "Eggs",
+        "soy": "Soy",
+        "wheat": "Wheat",
+        "fish": "Fish",
+        "sesame": "Sesame",
+        "sulfites": "Sulfites"
+      }
+    },
+    "cooking": {
+      "title": "Cooking Preferences",
+      "skill": "Cooking Skill Level",
+      "time": "Maximum Cooking Time",
+      "servings": "Serving Size",
+      "mealType": "Preferred Meal Type",
+      "cuisines": "Preferred Cuisines",
+      "spiceLevel": "Spice Level",
+      "equipment": "Available Equipment"
+    },
+    "personal": {
+      "title": "Personal Preferences",
+      "flavors": "Flavor Preferences",
+      "budget": "Budget Considerations",
+      "organic": "Organic Preferences",
+      "style": "Cooking Style",
+      "pace": "Meal Pace",
+      "seasonal": "Seasonal Ingredients"
+    },
+    "spiceLevelPreference": "Spice Level Preference",
+    "tastePreferences": "Taste Preferences",
+    "cookingStyle": "Cooking Style",
+    "preferredCuisines": "Preferred Cuisines",
+    "iEnjoySaltyFlavors": "I enjoy salty flavors",
+    "iEnjoySweetFlavors": "I enjoy sweet flavors",
+    "traditional": "Traditional",
+    "modern": "Modern",
+    "fusion": "Fusion",
+    "comfortFood": "Comfort Food",
+    "cookingTime15min": "15 minutes or less",
+    "cookingTime30min": "30 minutes or less",
+    "cookingTime45min": "45 minutes or less",
+    "cookingTime60minPlus": "60+ minutes (no limit)",
+    "servingSize1_2": "1-2 people",
+    "servingSize3_4": "3-4 people",
+    "servingSize5_6": "5-6 people",
+    "servingSize8Plus": "8+ people",
+    "preferBudgetFriendlyIngredients": "Prefer budget-friendly ingredients",
+    "preferSeasonalIngredients": "Prefer seasonal ingredients",
+    "organicPreference": "Organic Preference",
+    "noPreference": "No preference",
+    "preferOrganicWhenPossible": "Prefer organic when possible",
+    "avoidOrganicPreferConventional": "Avoid organic (prefer conventional)",
+    "pressEscOrClickOutsideToClose": "Press Esc or click outside to close",
+    "resetToDefaults": "Reset to Defaults",
+    "cancel": "Cancel",
+    "savePreferences": "Save Preferences",
+    "cookingSkillLevel": "Cooking Skill Level",
+    "cookingPacePreference": "Cooking Pace Preference",
+    "availableKitchenEquipment": "Available Kitchen Equipment",
+    "equipmentHint": "💡 Tip: Stovetop and oven are available by default for all recipes. Add additional equipment if you have it.",
+    "maximumCookingTime": "Maximum Cooking Time",
+    "servingSize": "Serving Size",
+    "preferredMealType": "Preferred Meal Type",
+    "additionalPreferences": "Additional Preferences",
+    "options": {
+      "skillLevels": {
+        "beginner": "Beginner",
+        "beginnerDesc": "New to cooking, need simple recipes",
+        "intermediate": "Intermediate",
+        "intermediateDesc": "Some experience, can handle moderate complexity",
+        "advanced": "Advanced",
+        "advancedDesc": "Experienced cook, can handle complex techniques"
+      },
+      "mealPaces": {
+        "quick": "Quick & Easy",
+        "quickDesc": "15-30 minutes",
+        "moderate": "Moderate",
+        "moderateDesc": "30-60 minutes",
+        "slow": "Slow & Relaxed",
+        "slowDesc": "60+ minutes"
+      },
+      "mealTypes": {
+        "breakfast": "Breakfast",
+        "lunch": "Lunch",
+        "dinner": "Dinner",
+        "snack": "Snack",
+        "dessert": "Dessert"
+      },
+      "spiceLevels": {
+        "mild": "Mild",
+        "medium": "Medium",
+        "hot": "Hot",
+        "veryHot": "Very Hot"
+      },
+      "cookingStyles": {
+        "traditional": "Traditional",
+        "modern": "Modern",
+        "fusion": "Fusion",
+        "minimalist": "Minimalist"
+      },
+      "cuisines": {
+        "italian": "Italian",
+        "mexican": "Mexican",
+        "asian": "Asian",
+        "mediterranean": "Mediterranean",
+        "indian": "Indian",
+        "french": "French",
+        "american": "American",
+        "thai": "Thai",
+        "japanese": "Japanese",
+        "greek": "Greek",
+        "spanish": "Spanish",
+        "middleeastern": "Middle Eastern",
+        "middle-eastern": "Middle Eastern",
+        "middleEastern": "Middle Eastern"
+      },
+      "equipment": {
+        "blender": "Blender",
+        "foodProcessor": "Food Processor",
+        "slowCooker": "Slow Cooker",
+        "airFryer": "Air Fryer",
+        "instantPot": "Instant Pot",
+        "standMixer": "Stand Mixer",
+        "grill": "Grill",
+        "oven": "Oven",
+        "stovetop": "Stovetop",
+        "microwave": "Microwave",
+        "toasterOven": "Toaster Oven",
+        "riceCooker": "Rice Cooker"
+      }
+    }
+  },
+
+
+
+  "errors": {
+    "general": "Something went wrong. Please try again.",
+    "noIngredients": "Please provide at least one ingredient.",
+    "invalidIngredients": "All ingredients must be valid text.",
+    "apiError": "Recipe generation service is temporarily unavailable. Please try again later.",
+    "timeout": "Recipe generation is taking longer than expected. Please try again.",
+    "quotaExceeded": "Recipe generation service is temporarily unavailable due to high demand. Please try again later.",
+    "imageProcessing": "Failed to process images",
+    "fileTooLarge": "File too large",
+    "invalidFileType": "Invalid file type",
+    "recipeGenerationIssue": "Recipe Generation Issue",
+    "recipeGenerationFailed": "I couldn't generate a recipe with the current ingredients. Please try with different ingredients or check your preferences.",
+    "tryDifferentIngredients": "Please try different ingredients",
+    "checkDietaryPreferences": "Check your dietary preferences",
+    "tryDifferentCombination": "Try again with a different combination",
+    "show": "Show",
+    "hide": "Hide",
+    "steps": "steps"
+  },
+  "ui": {
+    "enterIngredients": "Enter Ingredients",
+    "uploadImages": "Upload Images",
+    "whatsInYourKitchen": "What's in your kitchen?",
+    "listYourIngredientsAndWellCreateDeliciousRecipesForYou": "List your ingredients and we'll create delicious recipes for you",
+    "snapAPhotoOfYourIngredients": "Snap a photo of your ingredients",
+    "dontSeeYourIngredientsAddThemManuallyBelow": "Don't see your ingredients? Add them manually below.",
+    "detectingIngredients": "Detecting Ingredients...",
+    "detectIngredients": "Detect Ingredients",
+    "reviewEditIngredients": "Review & Edit Ingredients",
+    "removeIngredient": "Remove ingredient",
+    "addIngredient": "Add ingredient",
+    "generateRecipe": "Generate Recipe",
+    "generatingRecipe": "Generating recipe...",
+    "recipeGenerated": "Recipe Generated!",
+    "generatingInProgress": "Generating in progress...",
+    "startingGeneration": "Starting recipe generation...",
+    "pleaseWait": "Please wait while we create your recipe...",
+    "recipeGenerationComplete": "Recipe generation complete!",
+    "yourRecipes": "Your Recipes",
+    "noRecipesFound": "No recipes found",
+    "tryAddingMoreIngredientsOrUploadClearerImagesWithBetterLighting": "Try adding more ingredients or upload clearer images with better lighting.",
+    "personalizedRecipesEnabled": "Personalized recipes enabled",
+    "healthConditions": "Health conditions",
+    "dietaryRestrictions": "Dietary restrictions",
+    "preferredCuisines": "Preferred cuisines",
+    "cookingSkill": "Cooking skill",
+    "maxCookingTime": "Max cooking time",
+    "servingSize": "Serving size",
+    "mealType": "Meal type",
+    "budgetFriendly": "Budget-friendly"
+  },
+  "ingredientInput": {
+    "placeholder": "Enter an ingredient (e.g., chicken, onion, potato)",
+    "add": "Add",
+    "yourIngredients": "Your Ingredients ({count})",
+    "clearAll": "Clear All",
+    "generatingRecipes": "Generating Recipes...",
+    "generateRecipes": "Generate Recipes",
+    "clickToGenerate": "Click \"Generate Recipes\" to create personalized meal suggestions"
+  },
+  "savedRecipes": {
+    "savedRecipes": "Saved Recipes",
+    "noSavedRecipesYet": "No saved recipes yet",
+    "saveYourFavoriteRecipesToSeeThemHere": "Save your favorite recipes to see them here!",
+    "share": "Share",
+    "print": "Print",
+    "delete": "Delete",
+    "savedRecipesCount": "{count} recipes saved",
+    "import": "Import",
+    "export": "Export",
+    "clearAll": "Clear All",
+    "close": "Close",
+    "recipeShared": "Recipe shared!",
+    "shareFailed": "Share failed",
+    "printDialogOpened": "Print dialog opened!",
+    "printFailed": "Print failed",
+    "recipeDeleted": "Recipe deleted!",
+    "deleteFailed": "Delete failed",
+    "recipesExported": "Recipes exported!",
+    "exportFailed": "Export failed",
+    "imported": "Imported",
+    "newRecipes": "new recipes!",
+    "importFailedInvalidFile": "Import failed - invalid file",
+    "confirmClearAllRecipes": "Are you sure you want to delete all saved recipes? This action cannot be undone.",
+    "allRecipesCleared": "All recipes cleared!",
+    "clearFailed": "Clear failed",
+    "prep": "Prep",
+    "cook": "Cook",
+    "generatedByFridgeToFeast": "Generated by Fridge to Feast"
+  },
+  "storage": {
+    "warning": {
+      "title": "Storage Space Low",
+      "message": "Your browser storage is getting full. Consider exporting your recipes or clearing old data.",
+      "dismiss": "Dismiss"
+    },
+    "yourBrowserStorageIsGettingFull": "Your browser storage is getting full. Consider exporting your recipes or clearing old data."
+  },
+  "offline": {
+    "title": "You're offline",
+    "message": "Recipe generation requires internet connection. Your saved recipes are still available."
+  }
+} 

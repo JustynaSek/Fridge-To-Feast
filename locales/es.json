@@ -1,0 +1,347 @@
+{
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "close": "Cerrar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "add": "Agregar",
+    "clear": "Limpiar",
+    "clearAll": "Limpiar Todo",
+    "remove": "Quitar",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "submit": "Enviar",
+    "confirm": "Confirmar",
+    "yes": "Sí",
+    "no": "No",
+    "text": "Texto",
+    "photos": "Fotos",
+    "language": "Spanish",
+    "share": "Compartir",
+    "print": "Imprimir"
+  },
+  "header": {
+    "title": "De la Nevera al Festín",
+    "subtitle": "Generador de recetas con IA",
+    "savedRecipes": "Recetas Guardadas",
+    "preferences": "Preferencias",
+    "language": "Idioma"
+  },
+  "home": {
+    "hero": {
+      "title": "Recetas Rápidas con Lo Que Tienes",
+      "titleHighlight": "",
+      "subtitle": "¡Sube fotos de tu nevera o escribe ingredientes. Obtén recetas personalizadas en segundos!"
+    },
+    "footer": {
+      "copyright": "© 2024 De la Nevera al Festín. Hecho con ❤️ para los amantes de la comida."
+    }
+  },
+  "input": {
+    "text": {
+      "title": "¿Qué hay en tu cocina?",
+      "subtitle": "Lista tus ingredientes y crearemos deliciosas recetas para ti",
+      "placeholder": "Ingresa un ingrediente (ej., pollo, cebolla, papa)",
+      "addButton": "Agregar",
+      "ingredientsList": "Tus Ingredientes",
+      "clearAll": "Limpiar Todo",
+      "generateButton": "Generar Recetas",
+      "generating": "Generando Recetas...",
+      "clickToGenerate": "Haz clic en \"Generar Recetas\" para crear sugerencias de comidas personalizadas"
+    },
+    "image": {
+      "title": "Toma una foto de tus ingredientes",
+      "subtitle": "¿No ves tus ingredientes? Agrégales manualmente abajo.",
+      "uploadTitle": "Subir Imágenes",
+      "dropTitle": "Suelta tus imágenes aquí",
+      "dragDropText": "Arrastra y suelta imágenes aquí, o",
+      "browseFiles": "explorar archivos",
+      "fileInfo": "Soporta JPG, PNG, GIF • Máx 25MB por archivo • Hasta {maxFiles} imágenes",
+      "processing": "Procesando imágenes...",
+      "selectedImages": "Imágenes Seleccionadas",
+      "detectButton": "Detectar Ingredientes",
+      "detecting": "Detectando Ingredientes...",
+      "reviewTitle": "Revisar y Editar Ingredientes",
+      "addIngredient": "Agregar ingrediente",
+      "addButton": "Agregar",
+      "generateFromDetected": "Generar Recetas de Ingredientes Detectados"
+    }
+  },
+  "recipes": {
+    "loading": "Creando tus recetas...",
+    "noRecipes": "No se encontraron recetas",
+    "noRecipesText": "Intenta agregar más ingredientes o ajustar tus preferencias",
+    "actions": {
+      "save": "Guardar Receta",
+      "saved": "¡Receta guardada!",
+      "share": "Compartir Receta",
+      "shared": "¡Receta compartida!",
+      "print": "Imprimir Receta",
+      "printed": "¡Diálogo de impresión abierto!",
+      "failed": "Falló"
+    },
+    "sections": {
+      "ingredients": "Ingredientes",
+      "instructions": "Instrucciones",
+      "prepTime": "Tiempo de Preparación",
+      "cookTime": "Tiempo de Cocción"
+    }
+  },
+  "preferences": {
+    "title": "Preferencias Culinarias",
+    "subtitle": "Personaliza tu generación de recetas",
+    "tabs": {
+      "health": "Salud y Dieta",
+      "taste": "Sabor y Estilo",
+      "cooking": "Habilidades Culinarias",
+      "equipment": "Equipamiento de Cocina",
+      "meals": "Planificación de Comidas"
+    },
+    "healthConditions": "Condiciones de Salud",
+    "dietaryRestrictionsTitle": "Restricciones Dietéticas",
+    "allergiesTitle": "Alergias e Intolerancias",
+    "cookingSkillPreference": "Nivel de Habilidad Culinaria",
+    "cookingPacePreference": "Preferencias de Tiempo de Cocción",
+    "availableKitchenEquipment": "Equipamiento de Cocina Disponible",
+    "equipmentHint": "💡 Consejo: Estufa y horno están disponibles por defecto para todas las recetas. Agrega equipamiento adicional si lo tienes.",
+    "maximumCookingTime": "Tiempo Máximo de Cocción",
+    "servingSize": "Tamaño de Porción",
+    "preferredMealType": "Tipo de Comida Preferido",
+    "additionalPreferences": "Preferencias Adicionales",
+    "preferBudgetFriendlyIngredients": "Preferir ingredientes económicos",
+    "preferOrganicIngredients": "Preferir ingredientes orgánicos",
+    "preferSeasonalIngredients": "Preferir ingredientes de temporada",
+    "cookingTime15min": "15 minutos",
+    "cookingTime30min": "30 minutos",
+    "cookingTime45min": "45 minutos",
+    "cookingTime60minPlus": "60+ minutos",
+    "servingSize1_2": "1-2 personas",
+    "servingSize3_4": "3-4 personas",
+    "servingSize5_6": "5-6 personas",
+    "servingSize8Plus": "8+ personas",
+    "dietary": {
+      "healthConditions": "Condiciones de Salud",
+      "conditions": {
+        "diabetes": "Diabetes",
+        "heartDisease": "Enfermedad cardíaca",
+        "highBloodPressure": "Presión arterial alta",
+        "celiacDisease": "Enfermedad celíaca",
+        "lactoseIntolerance": "Intolerancia a la lactosa",
+        "ibs": "Síndrome del intestino irritable",
+        "kidneyDisease": "Enfermedad renal"
+      },
+      "restrictionsTitle": "Restricciones Dietéticas",
+      "restrictions": {
+        "vegetarian": "Vegetariano",
+        "vegan": "Vegano",
+        "pescatarian": "Pescetariano",
+        "keto": "Ceto",
+        "paleo": "Paleo",
+        "lowCarb": "Bajo en carbohidratos",
+        "glutenFree": "Sin gluten",
+        "dairyFree": "Sin lácteos"
+      },
+      "allergiesTitle": "Alergias e Intolerancias",
+      "allergyOptions": {
+        "nuts": "Frutos secos",
+        "shellfish": "Mariscos",
+        "eggs": "Huevos",
+        "soy": "Soja",
+        "wheat": "Trigo",
+        "fish": "Pescado",
+        "sesame": "Sésamo",
+        "sulfites": "Sulfitos"
+      }
+    },
+    "spiceLevelPreference": "Nivel de Especias Preferido",
+    "tastePreferences": "Preferencias de Sabor",
+    "iEnjoySaltyFlavors": "Me gustan los sabores salados",
+    "iEnjoySweetFlavors": "Me gustan los sabores dulces",
+    "cookingStyle": "Estilo de Cocina",
+    "traditional": "Tradicional",
+    "modern": "Moderno",
+    "fusion": "Fusión",
+    "comfortFood": "Comida de Conforto",
+    "preferredCuisines": "Cocinas Preferidas",
+    "cookingSkillLevel": "Nivel de Habilidad Culinaria",
+    "organicPreference": "Preferencia Orgánica",
+    "noPreference": "Sin preferencia",
+    "preferOrganicWhenPossible": "Preferir orgánico cuando sea posible",
+    "avoidOrganicPreferConventional": "Evitar orgánico, preferir convencional",
+    "pressEscOrClickOutsideToClose": "Presiona Esc o haz clic fuera para cerrar",
+    "resetToDefaults": "Restablecer a valores predeterminados",
+    "savePreferences": "Guardar preferencias",
+    "taste": {
+      "flavorPreferences": "Preferencias de Sabor",
+      "preferredCuisines": "Cocinas Preferidas"
+    },
+    "cooking": {
+      "skillLevelPreference": "Nivel de Habilidad Culinaria",
+      "cookingStylePreference": "Estilo de Cocina Preferido",
+      "mealPacePreference": "Preferencias de Tiempo de Comida"
+    },
+    "options": {
+      "skillLevels": {
+        "beginner": "Principiante",
+        "beginnerDesc": "Nuevo en cocina, recetas simples",
+        "intermediate": "Intermedio",
+        "intermediateDesc": "Alguna experiencia, técnicas básicas",
+        "advanced": "Avanzado",
+        "advancedDesc": "Experimentado, técnicas complejas",
+        "expert": "Experto"
+      },
+      "mealPaces": {
+        "quick": "Rápido",
+        "quickDesc": "Comidas rápidas y fáciles",
+        "moderate": "Moderado",
+        "moderateDesc": "Tiempo de preparación equilibrado",
+        "slow": "Lento",
+        "slowDesc": "Cocina elaborada y detallada"
+      },
+      "spiceLevels": {
+        "mild": "Suave",
+        "medium": "Medio",
+        "hot": "Picante",
+        "veryHot": "Muy Picante"
+      },
+      "cookingStyles": {
+        "traditional": "Tradicional",
+        "modern": "Moderno",
+        "fusion": "Fusión",
+        "comfort": "Confort"
+      },
+      "mealTypes": {
+        "breakfast": "Desayuno",
+        "lunch": "Almuerzo",
+        "dinner": "Cena",
+        "snack": "Refrigerio",
+        "dessert": "Postre"
+      },
+      "cuisines": {
+        "italian": "Italiana",
+        "mexican": "Mexicana",
+        "asian": "Asiática",
+        "mediterranean": "Mediterránea",
+        "indian": "India",
+        "french": "Francesa",
+        "american": "Americana",
+        "thai": "Tailandesa",
+        "japanese": "Japonesa",
+        "greek": "Griega",
+        "spanish": "Española",
+        "middleEastern": "Medio Oriental",
+        "middle-eastern": "Medio Oriental"
+      },
+      "equipment": {
+        "blender": "Licuadora",
+        "foodProcessor": "Procesador de alimentos",
+        "slowCooker": "Olla de cocción lenta",
+        "airFryer": "Freidora de aire",
+        "instantPot": "Olla instantánea",
+        "standMixer": "Batidora de pie",
+        "grill": "Parrilla",
+        "oven": "Horno",
+        "stovetop": "Estufa",
+        "microwave": "Microondas",
+        "toasterOven": "Horno tostador",
+        "riceCooker": "Arrocera"
+      }
+    }
+  },
+  "errors": {
+    "general": "Algo salió mal. Por favor, inténtalo de nuevo.",
+    "noIngredients": "Por favor, proporciona al menos un ingrediente.",
+    "invalidIngredients": "Todos los ingredientes deben ser texto válido.",
+    "apiError": "El servicio de generación de recetas no está disponible temporalmente. Por favor, inténtalo más tarde.",
+    "timeout": "La generación de recetas está tomando más tiempo del esperado. Por favor, inténtalo de nuevo.",
+    "quotaExceeded": "El servicio de generación de recetas no está disponible temporalmente debido a la alta demanda. Por favor, inténtalo más tarde.",
+    "imageProcessing": "Error al procesar imágenes",
+    "fileTooLarge": "Archivo demasiado grande",
+    "invalidFileType": "Tipo de archivo inválido",
+    "show": "Mostrar",
+    "hide": "Ocultar",
+    "steps": "pasos"
+  },
+  "ui": {
+    "enterIngredients": "Ingresar Ingredientes",
+    "uploadImages": "Subir Imágenes",
+    "whatsInYourKitchen": "¿Qué hay en tu cocina?",
+    "listYourIngredientsAndWellCreateDeliciousRecipesForYou": "Lista tus ingredientes y crearemos deliciosas recetas para ti",
+    "snapAPhotoOfYourIngredients": "Toma una foto de tus ingredientes",
+    "dontSeeYourIngredientsAddThemManuallyBelow": "¿No ves tus ingredientes? Agrégales manualmente abajo.",
+    "detectingIngredients": "Detectando Ingredientes...",
+    "detectIngredients": "Detectar Ingredientes",
+    "reviewEditIngredients": "Revisar y Editar Ingredientes",
+    "removeIngredient": "Quitar ingrediente",
+    "addIngredient": "Agregar ingrediente",
+    "generateRecipe": "Generar Receta",
+    "yourRecipes": "Tus Recetas",
+    "noRecipesFound": "No se encontraron recetas",
+    "tryAddingMoreIngredientsOrUploadClearerImagesWithBetterLighting": "Intenta agregar más ingredientes o subir imágenes más claras con mejor iluminación.",
+    "personalizedRecipesEnabled": "Recetas personalizadas habilitadas",
+    "healthConditions": "Condiciones de salud",
+    "dietaryRestrictions": "Restricciones dietéticas",
+    "preferredCuisines": "Cocinas preferidas",
+    "cookingSkill": "Habilidad culinaria",
+    "maxCookingTime": "Tiempo máx de cocción",
+    "servingSize": "Tamaño de porción",
+    "mealType": "Tipo de comida",
+    "budgetFriendly": "Económico"
+  },
+  "ingredientInput": {
+    "placeholder": "Ingresa un ingrediente (ej., pollo, cebolla, papa)",
+    "add": "Agregar",
+    "yourIngredients": "Tus Ingredientes ({count})",
+    "clearAll": "Limpiar Todo",
+    "generatingRecipes": "Generando Recetas...",
+    "generateRecipes": "Generar Recetas",
+    "clickToGenerate": "Haz clic en \"Generar Recetas\" para crear sugerencias de comidas personalizadas"
+  },
+  "savedRecipes": {
+    "savedRecipes": "Recetas Guardadas",
+    "noSavedRecipesYet": "Aún no hay recetas guardadas",
+    "saveYourFavoriteRecipesToSeeThemHere": "¡Guarda tus recetas favoritas para verlas aquí!",
+    "share": "Compartir",
+    "print": "Imprimir",
+    "delete": "Eliminar",
+    "savedRecipesCount": "{count} recetas guardadas",
+    "import": "Importar",
+    "export": "Exportar",
+    "clearAll": "Limpiar Todo",
+    "close": "Cerrar",
+    "recipeShared": "¡Receta compartida!",
+    "shareFailed": "Error al compartir",
+    "printDialogOpened": "¡Diálogo de impresión abierto!",
+    "printFailed": "Error al imprimir",
+    "recipeDeleted": "¡Receta eliminada!",
+    "deleteFailed": "Error al eliminar",
+    "recipesExported": "¡Recetas exportadas!",
+    "exportFailed": "Error al exportar",
+    "imported": "Importado",
+    "newRecipes": "nuevas recetas!",
+    "importFailedInvalidFile": "Error al importar - archivo inválido",
+    "confirmClearAllRecipes": "¿Estás seguro de que quieres eliminar todas las recetas guardadas? Esta acción no se puede deshacer.",
+    "allRecipesCleared": "¡Todas las recetas eliminadas!",
+    "clearFailed": "Error al limpiar",
+    "prep": "Prep",
+    "cook": "Cocción",
+    "generatedByFridgeToFeast": "Generado por De la Nevera al Festín"
+  },
+  "storage": {
+    "warning": {
+      "title": "Espacio de Almacenamiento Bajo",
+      "message": "Tu almacenamiento del navegador se está llenando. Considera exportar tus recetas o limpiar datos antiguos.",
+      "dismiss": "Descartar"
+    },
+    "yourBrowserStorageIsGettingFull": "Tu almacenamiento del navegador se está llenando. Considera exportar tus recetas o limpiar datos antiguos."
+  },
+  "offline": {
+    "title": "Estás sin conexión",
+    "message": "La generación de recetas requiere conexión a Internet. Tus recetas guardadas siguen disponibles."
+  }
+} 

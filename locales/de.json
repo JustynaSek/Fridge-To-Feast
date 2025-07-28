@@ -1,0 +1,347 @@
+{
+  "common": {
+    "loading": "Laden...",
+    "error": "Fehler",
+    "success": "Erfolg",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "close": "Schließen",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "add": "Hinzufügen",
+    "clear": "Löschen",
+    "clearAll": "Alles löschen",
+    "remove": "Entfernen",
+    "back": "Zurück",
+    "next": "Weiter",
+    "previous": "Zurück",
+    "submit": "Absenden",
+    "confirm": "Bestätigen",
+    "yes": "Ja",
+    "no": "Nein",
+    "text": "Text",
+    "photos": "Fotos",
+    "language": "German",
+    "share": "Teilen",
+    "print": "Drucken"
+  },
+  "header": {
+    "title": "Vom Kühlschrank zum Festmahl",
+    "subtitle": "KI-gestützter Rezeptgenerator",
+    "savedRecipes": "Gespeicherte Rezepte",
+    "preferences": "Einstellungen",
+    "language": "Sprache"
+  },
+  "home": {
+    "hero": {
+      "title": "Schnelle Rezepte mit dem was Sie haben",
+      "titleHighlight": "",
+      "subtitle": "Laden Sie Fotos Ihres Kühlschranks hoch oder geben Sie Zutaten ein. Erhalten Sie personalisierte Rezepte in Sekunden!"
+    },
+    "footer": {
+      "copyright": "© 2024 Vom Kühlschrank zum Festmahl. Gemacht mit ❤️ für Feinschmecker."
+    }
+  },
+  "input": {
+    "text": {
+      "title": "Was ist in Ihrer Küche?",
+      "subtitle": "Listen Sie Ihre Zutaten auf und wir erstellen köstliche Rezepte für Sie",
+      "placeholder": "Geben Sie eine Zutat ein (z.B. Hähnchen, Zwiebel, Kartoffel)",
+      "addButton": "Hinzufügen",
+      "ingredientsList": "Ihre Zutaten",
+      "clearAll": "Alles löschen",
+      "generateButton": "Rezepte generieren",
+      "generating": "Rezepte werden generiert...",
+      "clickToGenerate": "Klicken Sie auf \"Rezepte generieren\", um personalisierte Mahlzeitenvorschläge zu erstellen"
+    },
+    "image": {
+      "title": "Machen Sie ein Foto Ihrer Zutaten",
+      "subtitle": "Sehen Sie Ihre Zutaten nicht? Fügen Sie sie unten manuell hinzu.",
+      "uploadTitle": "Bilder hochladen",
+      "dropTitle": "Legen Sie Ihre Bilder hier ab",
+      "dragDropText": "Ziehen und legen Sie Bilder hier ab, oder",
+      "browseFiles": "Dateien durchsuchen",
+      "fileInfo": "Unterstützt JPG, PNG, GIF • Max 25MB pro Datei • Bis zu {maxFiles} Bilder",
+      "processing": "Bilder werden verarbeitet...",
+      "selectedImages": "Ausgewählte Bilder",
+      "detectButton": "Zutaten erkennen",
+      "detecting": "Zutaten werden erkannt...",
+      "reviewTitle": "Zutaten überprüfen und bearbeiten",
+      "addIngredient": "Zutat hinzufügen",
+      "addButton": "Hinzufügen",
+      "generateFromDetected": "Rezepte aus erkannten Zutaten generieren"
+    }
+  },
+  "recipes": {
+    "loading": "Ihre Rezepte werden erstellt...",
+    "noRecipes": "Keine Rezepte gefunden",
+    "noRecipesText": "Versuchen Sie, mehr Zutaten hinzuzufügen oder Ihre Einstellungen anzupassen",
+    "actions": {
+      "save": "Rezept speichern",
+      "saved": "Rezept gespeichert!",
+      "share": "Rezept teilen",
+      "shared": "Rezept geteilt!",
+      "print": "Rezept drucken",
+      "printed": "Druckdialog geöffnet!",
+      "failed": "Fehlgeschlagen"
+    },
+    "sections": {
+      "ingredients": "Zutaten",
+      "instructions": "Anweisungen",
+      "prepTime": "Vorbereitungszeit",
+      "cookTime": "Kochzeit"
+    }
+  },
+  "preferences": {
+    "title": "Kochpräferenzen",
+    "subtitle": "Passen Sie Ihre Rezeptgenerierung an",
+    "tabs": {
+      "health": "Gesundheit & Ernährung",
+      "taste": "Geschmack & Stil",
+      "cooking": "Kochfähigkeiten",
+      "equipment": "Küchenausstattung",
+      "meals": "Mahlzeitenplanung"
+    },
+    "healthConditions": "Gesundheitszustände",
+    "dietaryRestrictionsTitle": "Ernährungseinschränkungen",
+    "allergiesTitle": "Allergien und Unverträglichkeiten",
+    "cookingSkillPreference": "Kochfähigkeitsniveau",
+    "cookingPacePreference": "Kochzeitpräferenzen",
+    "availableKitchenEquipment": "Verfügbare Küchenausstattung",
+    "equipmentHint": "💡 Tipp: Herd und Ofen sind standardmäßig für alle Rezepte verfügbar. Fügen Sie zusätzliche Ausstattung hinzu, wenn Sie sie haben.",
+    "maximumCookingTime": "Maximale Kochzeit",
+    "servingSize": "Portionsgröße",
+    "preferredMealType": "Bevorzugter Mahlzeitentyp",
+    "additionalPreferences": "Zusätzliche Präferenzen",
+    "preferBudgetFriendlyIngredients": "Budgetfreundliche Zutaten bevorzugen",
+    "preferOrganicIngredients": "Bio-Zutaten bevorzugen",
+    "preferSeasonalIngredients": "Saisonale Zutaten bevorzugen",
+    "cookingTime15min": "15 Minuten",
+    "cookingTime30min": "30 Minuten",
+    "cookingTime45min": "45 Minuten",
+    "cookingTime60minPlus": "60+ Minuten",
+    "servingSize1_2": "1-2 Personen",
+    "servingSize3_4": "3-4 Personen",
+    "servingSize5_6": "5-6 Personen",
+    "servingSize8Plus": "8+ Personen",
+    "dietary": {
+      "healthConditions": "Gesundheitszustände",
+      "conditions": {
+        "diabetes": "Diabetes",
+        "heartDisease": "Herzerkrankung",
+        "highBloodPressure": "Bluthochdruck",
+        "celiacDisease": "Zöliakie",
+        "lactoseIntolerance": "Laktoseintoleranz",
+        "ibs": "Reizdarmsyndrom",
+        "kidneyDisease": "Nierenerkrankung"
+      },
+      "restrictionsTitle": "Ernährungseinschränkungen",
+      "restrictions": {
+        "vegetarian": "Vegetarisch",
+        "vegan": "Vegan",
+        "pescatarian": "Pescetarisch",
+        "keto": "Keto",
+        "paleo": "Paleo",
+        "lowCarb": "Kohlenhydratarm",
+        "glutenFree": "Glutenfrei",
+        "dairyFree": "Laktosefrei"
+      },
+      "allergiesTitle": "Allergien und Unverträglichkeiten",
+      "allergyOptions": {
+        "nuts": "Nüsse",
+        "shellfish": "Schalentiere",
+        "eggs": "Eier",
+        "soy": "Soja",
+        "wheat": "Weizen",
+        "fish": "Fisch",
+        "sesame": "Sesam",
+        "sulfites": "Sulfite"
+      }
+    },
+    "spiceLevelPreference": "Bevorzugtes Gewürzniveau",
+    "tastePreferences": "Geschmackspräferenzen",
+    "iEnjoySaltyFlavors": "Ich mag salzige Geschmäcker",
+    "iEnjoySweetFlavors": "Ich mag süße Geschmäcker",
+    "cookingStyle": "Kochstil",
+    "traditional": "Traditionell",
+    "modern": "Modern",
+    "fusion": "Fusion",
+    "comfortFood": "Comfort Food",
+    "preferredCuisines": "Bevorzugte Küchen",
+    "cookingSkillLevel": "Kochfähigkeitsniveau",
+    "organicPreference": "Bio-Präferenz",
+    "noPreference": "Keine Präferenz",
+    "preferOrganicWhenPossible": "Bio bevorzugen wenn möglich",
+    "avoidOrganicPreferConventional": "Bio vermeiden, konventionell bevorzugen",
+    "pressEscOrClickOutsideToClose": "Drücken Sie Esc oder klicken Sie außerhalb zum Schließen",
+    "resetToDefaults": "Auf Standard zurücksetzen",
+    "savePreferences": "Einstellungen speichern",
+    "taste": {
+      "flavorPreferences": "Geschmackspräferenzen",
+      "preferredCuisines": "Bevorzugte Küchen"
+    },
+    "cooking": {
+      "skillLevelPreference": "Kochfähigkeitsniveau",
+      "cookingStylePreference": "Bevorzugter Kochstil",
+      "mealPacePreference": "Mahlzeitenzeitpräferenzen"
+    },
+    "options": {
+      "skillLevels": {
+        "beginner": "Anfänger",
+        "beginnerDesc": "Neu im Kochen, einfache Rezepte",
+        "intermediate": "Fortgeschritten",
+        "intermediateDesc": "Etwas Erfahrung, grundlegende Techniken",
+        "advanced": "Erweitert",
+        "advancedDesc": "Erfahren, komplexe Techniken",
+        "expert": "Experte"
+      },
+      "mealPaces": {
+        "quick": "Schnell",
+        "quickDesc": "Schnelle und einfache Mahlzeiten",
+        "moderate": "Moderat",
+        "moderateDesc": "Ausgewogene Zubereitungszeit",
+        "slow": "Langsam",
+        "slowDesc": "Ausführliche und detaillierte Küche"
+      },
+      "spiceLevels": {
+        "mild": "Mild",
+        "medium": "Mittel",
+        "hot": "Scharf",
+        "veryHot": "Sehr scharf"
+      },
+      "cookingStyles": {
+        "traditional": "Traditionell",
+        "modern": "Modern",
+        "fusion": "Fusion",
+        "comfort": "Comfort"
+      },
+      "mealTypes": {
+        "breakfast": "Frühstück",
+        "lunch": "Mittagessen",
+        "dinner": "Abendessen",
+        "snack": "Snack",
+        "dessert": "Dessert"
+      },
+      "cuisines": {
+        "italian": "Italienisch",
+        "mexican": "Mexikanisch",
+        "asian": "Asiatisch",
+        "mediterranean": "Mittelmeer",
+        "indian": "Indisch",
+        "french": "Französisch",
+        "american": "Amerikanisch",
+        "thai": "Thailändisch",
+        "japanese": "Japanisch",
+        "greek": "Griechisch",
+        "spanish": "Spanisch",
+        "middleEastern": "Mittlerer Osten",
+        "middle-eastern": "Mittlerer Osten"
+      },
+      "equipment": {
+        "blender": "Mixer",
+        "foodProcessor": "Küchenmaschine",
+        "slowCooker": "Slow Cooker",
+        "airFryer": "Heißluftfritteuse",
+        "instantPot": "Schnellkochtopf",
+        "standMixer": "Standmixer",
+        "grill": "Grill",
+        "oven": "Ofen",
+        "stovetop": "Herd",
+        "microwave": "Mikrowelle",
+        "toasterOven": "Toasterofen",
+        "riceCooker": "Reiskocher"
+      }
+    }
+  },
+  "errors": {
+    "general": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
+    "noIngredients": "Bitte geben Sie mindestens eine Zutat an.",
+    "invalidIngredients": "Alle Zutaten müssen gültiger Text sein.",
+    "apiError": "Der Rezeptgenerierungsservice ist vorübergehend nicht verfügbar. Bitte versuchen Sie es später erneut.",
+    "timeout": "Die Rezeptgenerierung dauert länger als erwartet. Bitte versuchen Sie es erneut.",
+    "quotaExceeded": "Der Rezeptgenerierungsservice ist vorübergehend nicht verfügbar aufgrund hoher Nachfrage. Bitte versuchen Sie es später erneut.",
+    "imageProcessing": "Fehler beim Verarbeiten der Bilder",
+    "fileTooLarge": "Datei zu groß",
+    "invalidFileType": "Ungültiger Dateityp",
+    "show": "Anzeigen",
+    "hide": "Ausblenden",
+    "steps": "Schritte"
+  },
+  "ui": {
+    "enterIngredients": "Zutaten eingeben",
+    "uploadImages": "Bilder hochladen",
+    "whatsInYourKitchen": "Was ist in Ihrer Küche?",
+    "listYourIngredientsAndWellCreateDeliciousRecipesForYou": "Listen Sie Ihre Zutaten auf und wir erstellen köstliche Rezepte für Sie",
+    "snapAPhotoOfYourIngredients": "Machen Sie ein Foto Ihrer Zutaten",
+    "dontSeeYourIngredientsAddThemManuallyBelow": "Sehen Sie Ihre Zutaten nicht? Fügen Sie sie unten manuell hinzu.",
+    "detectingIngredients": "Zutaten werden erkannt...",
+    "detectIngredients": "Zutaten erkennen",
+    "reviewEditIngredients": "Zutaten überprüfen und bearbeiten",
+    "removeIngredient": "Zutat entfernen",
+    "addIngredient": "Zutat hinzufügen",
+    "generateRecipe": "Rezept generieren",
+    "yourRecipes": "Ihre Rezepte",
+    "noRecipesFound": "Keine Rezepte gefunden",
+    "tryAddingMoreIngredientsOrUploadClearerImagesWithBetterLighting": "Versuchen Sie, mehr Zutaten hinzuzufügen oder klarere Bilder mit besserer Beleuchtung hochzuladen.",
+    "personalizedRecipesEnabled": "Personalisierte Rezepte aktiviert",
+    "healthConditions": "Gesundheitszustände",
+    "dietaryRestrictions": "Ernährungseinschränkungen",
+    "preferredCuisines": "Bevorzugte Küchen",
+    "cookingSkill": "Kochfähigkeit",
+    "maxCookingTime": "Max. Kochzeit",
+    "servingSize": "Portionsgröße",
+    "mealType": "Mahlzeitentyp",
+    "budgetFriendly": "Budgetfreundlich"
+  },
+  "ingredientInput": {
+    "placeholder": "Geben Sie eine Zutat ein (z.B. Hähnchen, Zwiebel, Kartoffel)",
+    "add": "Hinzufügen",
+    "yourIngredients": "Ihre Zutaten ({count})",
+    "clearAll": "Alles löschen",
+    "generatingRecipes": "Rezepte werden generiert...",
+    "generateRecipes": "Rezepte generieren",
+    "clickToGenerate": "Klicken Sie auf \"Rezepte generieren\", um personalisierte Mahlzeitenvorschläge zu erstellen"
+  },
+  "savedRecipes": {
+    "savedRecipes": "Gespeicherte Rezepte",
+    "noSavedRecipesYet": "Noch keine Rezepte gespeichert",
+    "saveYourFavoriteRecipesToSeeThemHere": "Speichern Sie Ihre Lieblingsrezepte, um sie hier zu sehen!",
+    "share": "Teilen",
+    "print": "Drucken",
+    "delete": "Löschen",
+    "savedRecipesCount": "{count} Rezepte gespeichert",
+    "import": "Importieren",
+    "export": "Exportieren",
+    "clearAll": "Alles löschen",
+    "close": "Schließen",
+    "recipeShared": "Rezept geteilt!",
+    "shareFailed": "Teilen fehlgeschlagen",
+    "printDialogOpened": "Druckdialog geöffnet!",
+    "printFailed": "Drucken fehlgeschlagen",
+    "recipeDeleted": "Rezept gelöscht!",
+    "deleteFailed": "Löschen fehlgeschlagen",
+    "recipesExported": "Rezepte exportiert!",
+    "exportFailed": "Export fehlgeschlagen",
+    "imported": "Importiert",
+    "newRecipes": "neue Rezepte!",
+    "importFailedInvalidFile": "Import fehlgeschlagen - ungültige Datei",
+    "confirmClearAllRecipes": "Sind Sie sicher, dass Sie alle gespeicherten Rezepte löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "allRecipesCleared": "Alle Rezepte gelöscht!",
+    "clearFailed": "Löschen fehlgeschlagen",
+    "prep": "Vorbereitung",
+    "cook": "Kochen",
+    "generatedByFridgeToFeast": "Generiert von Vom Kühlschrank zum Festmahl"
+  },
+  "storage": {
+    "warning": {
+      "title": "Speicherplatz niedrig",
+      "message": "Ihr Browser-Speicher wird voll. Erwägen Sie, Ihre Rezepte zu exportieren oder alte Daten zu löschen.",
+      "dismiss": "Verwerfen"
+    },
+    "yourBrowserStorageIsGettingFull": "Ihr Browser-Speicher wird voll. Erwägen Sie, Ihre Rezepte zu exportieren oder alte Daten zu löschen."
+  },
+  "offline": {
+    "title": "Sie sind offline",
+    "message": "Die Rezeptgenerierung erfordert eine Internetverbindung. Ihre gespeicherten Rezepte sind weiterhin verfügbar."
+  }
+} 

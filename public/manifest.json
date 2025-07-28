@@ -1,0 +1,21 @@
+{
+  "name": "Fridge to Feast",
+  "short_name": "Fridge2Feast",
+  "description": "Transform your ingredients into delicious recipes with AI-powered cooking suggestions",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#f97316",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["food", "lifestyle", "utilities"],
+  "lang": "en",
+  "dir": "ltr"
+} 
