@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  fridge-to-feast:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - HOSTNAME=0.0.0.0
+      # Add your environment variables here for local testing
+      # - OPENAI_API_KEY=your_openai_api_key
+      # - GOOGLE_CLOUD_VISION_API_KEY=your_vision_api_key
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    # Uncomment the following lines if you need to mount environment files
+    # volumes:
+    #   - ./.env.production:/app/.env.production:ro
+
+  # Optional: Add a health check service
+  healthcheck:
+    image: curlimages/curl:latest
+    depends_on:
+      - fridge-to-feast
+    command: >
+      sh -c "
+        echo 'Waiting for app to be ready...' &&
+        curl -f http://fridge-to-feast:3000/api/health ||
+        exit 1
+      "
+    restart: "no" 
