@@ -28,7 +28,7 @@ steps:
       - '--platform'
       - 'managed'
       - '--region'
-      - '${_GAR_LOCATION}'
+      - '${_GAR_LOCATION}' # This will now also be us-central1
       - '--allow-unauthenticated'
       - '--update-secrets=OPENAI_API_KEY=OPENAI_API_KEY:latest,GOOGLE_VISION_API_KEY=GOOGLE_VISION_API_KEY:latest'
       - '--cpu=2'
@@ -46,10 +46,10 @@ options:
 # Substitutions: Define variables that Cloud Build will replace at runtime
 substitutions:
   _PROJECT_ID: fridgefeast-466610 # Your GCP Project ID
-  _GAR_LOCATION: europe-west3    # The region you chose for your Artifact Registry
+  _GAR_LOCATION: us-central1      # <--- CHANGE THIS TO US-CENTRAL1 (Iowa)
   _SERVICE_NAME: fridge-feast-next-app # The name you want for your Cloud Run service
-  _REPO_NAME: nextjs-app-repo    # The name of your Artifact Registry repository
-  _IMAGE_NAME: fridge-feast-app  # A specific name for the Docker image within your repository
+  _REPO_NAME: fridge-to-feast-app-repo     # The name of your Artifact Registry repository
+  _IMAGE_NAME: fridge-feast-app   # A specific name for the Docker image within your repository
 
 # Optional: Cache node_modules to speed up builds
 # caches:
