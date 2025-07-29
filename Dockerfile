@@ -1,2 +1,41 @@
-node_modules
-.next
+# Dockerfile
+
+# Stage 0: Install production dependencies
+FROM node:18-alpine AS deps
+WORKDIR /app
+RUN apk add --no-cache libc6-compat
+COPY package.json package-lock.json ./
+RUN npm ci --only=production
+
+# Stage 1: Build the Next.js application (including dev dependencies for build process)
+FROM node:18-alpine AS builder
+WORKDIR /app
+RUN apk add --no-cache libc6-compat
+COPY package.json package-lock.json ./
+RUN npm ci # Install all dependencies (dev and prod) for building
+COPY . . # Copy all source files
+ENV NEXT_TELEMETRY_DISABLED 1
+ENV NODE_ENV production
+RUN npm run build
+
+# Stage 2: Run the Next.js application (only production dependencies for smaller image)
+FROM node:18-alpine AS runner
+WORKDIR /app
+RUN apk add --no-cache libc6-compat
+
+# Copy package.json for npm start
+COPY package.json ./package.json
+
+# Copy production node_modules from the 'deps' stage
+COPY --from=deps /app/node_modules ./node_modules
+
+# Copy the .next build output from the 'builder' stage
+COPY --from=builder /app/.next ./.next
+# Copy the public folder with static assets
+COPY --from=builder /app/public ./public
+# Copy the Next.js config file
+# Use next.config.ts if that's what you have, otherwise next.config.js
+COPY --from=builder /app/next.config.js ./next.config.js
+
+EXPOSE 3000
+CMD ["npm", "start"]
