@@ -24,12 +24,14 @@ interface UserPreferences {
 export async function POST(req: NextRequest) {
   const startTime = Date.now();
   
+  // Declare preferences outside try block so it's accessible in catch block
+  let preferences: UserPreferences | null = null;
+  
   try {
     console.log('🍳 Recipe generation streaming API called');
     
     // Parse request body with error handling
     let ingredients: string[] = [];
-    let preferences: UserPreferences | null = null;
     
     try {
       const body = await req.json();

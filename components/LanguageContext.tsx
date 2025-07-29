@@ -45,12 +45,18 @@ const translations: Record<Language, Record<string, unknown>> = {
 
 // Helper function to get nested translation
 const getNestedTranslation = (obj: Record<string, unknown>, path: string): string => {
-  return path.split('.').reduce((current, key) => {
+  const keys = path.split('.');
+  let current: unknown = obj;
+  
+  for (const key of keys) {
     if (current && typeof current === 'object' && key in current) {
-      return current[key] as Record<string, unknown>;
+      current = (current as Record<string, unknown>)[key];
+    } else {
+      return path; // Return the original path if not found
     }
-    return undefined;
-  }, obj as Record<string, unknown>) as string || path;
+  }
+  
+  return typeof current === 'string' ? current : path;
 };
 
 // Helper function to replace parameters in translation

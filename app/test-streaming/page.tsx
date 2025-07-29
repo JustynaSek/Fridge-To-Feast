@@ -107,14 +107,6 @@ export default function TestStreamingPage() {
 
           <StreamingRecipeDisplay
             isStreaming={isStreaming}
-            onStreamingComplete={(newRecipes) => {
-              setRecipes(newRecipes);
-              setIsStreaming(false);
-            }}
-            onError={(errorMessage) => {
-              setError(errorMessage);
-              setIsStreaming(false);
-            }}
           />
 
           {recipes.length > 0 && (

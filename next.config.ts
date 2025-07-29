@@ -29,21 +29,8 @@ const nextConfig: NextConfig = {
     ],
   },
   
-  experimental: {
-    serverComponentsExternalPackages: ['@google-cloud/vision'],
-  },
-  
-  api: {
-    bodyParser: {
-      sizeLimit: '50mb',
-    },
-  },
-  
-  // Optimize for production deployment
-  compress: true,
-  
-  // Enable SWC minification for better performance
-  swcMinify: true,
+  // Updated from experimental.serverComponentsExternalPackages
+  serverExternalPackages: ['@google-cloud/vision'],
   
   // Configure headers for security and performance
   async headers() {
