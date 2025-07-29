@@ -1,18 +1,13 @@
 "use client";
 import { useState, useEffect } from 'react';
-import { Recipe } from './RecipeDisplay';
 import { useLanguage } from './LanguageContext';
 
 interface StreamingRecipeDisplayProps {
   isStreaming: boolean;
-  onStreamingComplete: (recipes: Recipe[]) => void;
-  onError: (error: string) => void;
 }
 
 export default function StreamingRecipeDisplay({ 
-  isStreaming, 
-  onStreamingComplete, 
-  onError 
+  isStreaming
 }: StreamingRecipeDisplayProps) {
   const { t } = useLanguage();
   const [streamingText, setStreamingText] = useState('');
@@ -24,55 +19,6 @@ export default function StreamingRecipeDisplay({
       setIsComplete(false);
     }
   }, [isStreaming]);
-
-  const handleStreamingResponse = async (response: Response) => {
-    if (!response.body) {
-      onError("No response body available");
-      return;
-    }
-
-    const reader = response.body.getReader();
-    const decoder = new TextDecoder();
-    let accumulatedText = '';
-
-    try {
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-
-        const chunk = decoder.decode(value);
-        accumulatedText += chunk;
-        setStreamingText(accumulatedText);
-
-        // Try to parse as JSON (in case it's complete)
-        try {
-          const recipes = JSON.parse(accumulatedText);
-          if (Array.isArray(recipes)) {
-            setIsComplete(true);
-            onStreamingComplete(recipes);
-            return;
-          }
-        } catch (e) {
-          // Continue accumulating if JSON is incomplete
-        }
-      }
-
-      // Final attempt to parse the complete response
-      try {
-        const recipes = JSON.parse(accumulatedText);
-        if (Array.isArray(recipes)) {
-          setIsComplete(true);
-          onStreamingComplete(recipes);
-        } else {
-          onError("Invalid response format");
-        }
-      } catch (e) {
-        onError("Failed to parse recipe response");
-      }
-    } catch (error) {
-      onError(error instanceof Error ? error.message : "Streaming error");
-    }
-  };
 
   if (!isStreaming && !isComplete) {
     return null;

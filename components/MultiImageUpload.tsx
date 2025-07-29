@@ -1,7 +1,7 @@
 "use client";
-import { useState, useCallback, useRef, useEffect } from "react";
+import { useState, useCallback, useRef } from "react";
 import { useLanguage } from "./LanguageContext";
-import { compressImages, smartCompress, CompressionResult } from "../utils/imageCompression";
+import { smartCompress } from "../utils/imageCompression";
 
 interface MultiImageUploadProps {
   onFilesSelected: (files: File[], previews: string[]) => void;

@@ -56,7 +56,8 @@ export default function TestStreamingPage() {
             setRecipes(recipes);
             break;
           }
-        } catch (e) {
+        } catch (_e) {
+          // Continue reading chunks
         }
       }
 
@@ -68,7 +69,7 @@ export default function TestStreamingPage() {
         } else {
           throw new Error('Invalid response format');
         }
-      } catch (e) {
+      } catch (_e) {
         throw new Error('Failed to parse recipe response');
       }
 

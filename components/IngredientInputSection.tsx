@@ -186,7 +186,7 @@ export default function IngredientInputSection() {
             setRecipes(recipes);
             break;
           }
-        } catch (e) {
+        } catch (_e) {
           // Continue accumulating if JSON is incomplete
         }
       }
@@ -199,7 +199,7 @@ export default function IngredientInputSection() {
         } else {
           throw new Error("Invalid response format");
         }
-      } catch (e) {
+      } catch (_e) {
         throw new Error("Failed to parse recipe response");
       }
       
@@ -228,9 +228,7 @@ export default function IngredientInputSection() {
   const handleFilesSelected = useCallback((newFiles: File[], newPreviews: string[]) => {
     console.log('🖼️ handleFilesSelected called with:', {
       newFiles: newFiles.length,
-      newPreviews: newPreviews.length,
-      existingFiles: imageFiles.length,
-      existingPreviews: imagePreviews.length
+      newPreviews: newPreviews.length
     });
     
     // Only add the new files, don't reprocess existing ones
@@ -241,8 +239,6 @@ export default function IngredientInputSection() {
   // Handle individual file deletion
   const handleFileDelete = useCallback((index: number) => {
     console.log('🗑️ handleFileDelete called with index:', index);
-    console.log('🗑️ Current imageFiles length:', imageFiles.length);
-    console.log('🗑️ Current imagePreviews length:', imagePreviews.length);
     
     setImageFiles(prev => {
       const newFiles = prev.filter((_, i) => i !== index);
@@ -256,7 +252,7 @@ export default function IngredientInputSection() {
     });
     // Clear identified ingredients when images change
     setIdentifiedIngredients([]);
-  }, [imageFiles.length, imagePreviews.length]);
+  }, []);
 
   // Handle clear all files
   const handleClearAll = useCallback(() => {
@@ -382,7 +378,7 @@ export default function IngredientInputSection() {
               }
               break;
             }
-          } catch (e) {
+          } catch (_e) {
             // Continue accumulating if JSON is incomplete
           }
         }
@@ -398,7 +394,7 @@ export default function IngredientInputSection() {
           } else {
             throw new Error("Invalid response format");
           }
-        } catch (e) {
+        } catch (_e) {
           throw new Error("Failed to parse recipe response");
         }
         

@@ -21,15 +21,6 @@ interface UserPreferences {
   language?: string;
 }
 
-interface Recipe {
-  title: string;
-  description: string;
-  ingredients: string[] | Array<{ ingredient: string; quantity: string }>;
-  instructions: string | string[];
-  prepTime: string;
-  cookTime: string;
-}
-
 export async function POST(req: NextRequest) {
   const startTime = Date.now();
   

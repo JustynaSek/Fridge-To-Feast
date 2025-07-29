@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { StreamingTextResponse } from 'ai';
 
 interface UserPreferences {
   dietaryRestrictions?: string[];

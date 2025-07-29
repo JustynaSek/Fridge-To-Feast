@@ -1,6 +1,14 @@
 "use client";
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { useRouter, usePathname } from 'next/navigation';
+
+// Import translation files
+import enTranslations from '../locales/en.json';
+import esTranslations from '../locales/es.json';
+import frTranslations from '../locales/fr.json';
+import deTranslations from '../locales/de.json';
+import itTranslations from '../locales/it.json';
+import ptTranslations from '../locales/pt.json';
+import plTranslations from '../locales/pl.json';
 
 // Language options
 export const languages = {
@@ -25,19 +33,24 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 // Translation data
-const translations: Record<Language, any> = {
-  en: require('../locales/en.json'),
-  es: require('../locales/es.json'),
-  fr: require('../locales/fr.json'),
-  de: require('../locales/de.json'),
-  it: require('../locales/it.json'),
-  pt: require('../locales/pt.json'),
-  pl: require('../locales/pl.json'),
+const translations: Record<Language, Record<string, unknown>> = {
+  en: enTranslations,
+  es: esTranslations,
+  fr: frTranslations,
+  de: deTranslations,
+  it: itTranslations,
+  pt: ptTranslations,
+  pl: plTranslations,
 };
 
 // Helper function to get nested translation
-const getNestedTranslation = (obj: any, path: string): string => {
-  return path.split('.').reduce((current, key) => current?.[key], obj) || path;
+const getNestedTranslation = (obj: Record<string, unknown>, path: string): string => {
+  return path.split('.').reduce((current, key) => {
+    if (current && typeof current === 'object' && key in current) {
+      return current[key] as Record<string, unknown>;
+    }
+    return undefined;
+  }, obj as Record<string, unknown>) as string || path;
 };
 
 // Helper function to replace parameters in translation
@@ -49,8 +62,6 @@ const replaceParams = (text: string, params?: Record<string, string | number>): 
 };
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const router = useRouter();
-  const pathname = usePathname();
   const [currentLanguage, setCurrentLanguage] = useState<Language>('en');
 
   // Initialize language from localStorage
@@ -76,7 +87,6 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       
       // For now, we'll just update the language state
       // In a full i18n setup, you might want to redirect to localized routes
-      // router.push(pathname, { locale: lang });
     }
   };
 
