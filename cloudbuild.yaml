@@ -8,7 +8,6 @@ steps:
       - '${_GAR_LOCATION}-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/${_IMAGE_NAME}:latest'
       - '.'
     env:
-      # Use the PROJECT_ID from substitutions directly as env var if needed by Dockerfile (less common)
       - 'PROJECT_ID=${_PROJECT_ID}'
 
   # Step 2: Push the Docker image to Artifact Registry
@@ -29,31 +28,32 @@ steps:
       - '--platform'
       - 'managed'
       - '--region'
-      - '${_GAR_LOCATION}' # Cloud Run service region should match Artifact Registry location for best performance
-      - '--allow-unauthenticated' # Makes your website publicly accessible
-      # Inject secrets as environment variables: ENV_VAR_NAME=SECRET_NAME:version
-      # 'latest' always uses the most recent version of the secret
+      - '${_GAR_LOCATION}'
+      - '--allow-unauthenticated'
       - '--update-secrets=OPENAI_API_KEY=OPENAI_API_KEY:latest,GOOGLE_VISION_API_KEY=GOOGLE_VISION_API_KEY:latest'
-      - '--cpu=2' # Adjust CPU based on your needs (start here, increase if slow)
-      - '--memory=4Gi' # Adjust memory for image processing (start here, increase if large images fail)
-      - '--timeout=900s' # 15 minutes. Adjust up to 3600s (1 hour) for very long tasks.
-      - '--min-instances=0' # Scale down to zero instances when idle (cost-saving)
-      - '--max-instances=5' # Max instances to scale up to (adjust for expected traffic)
+      - '--cpu=2'
+      - '--memory=4Gi'
+      - '--timeout=900s'
+      - '--min-instances=0'
+      - '--max-instances=5'
     env:
-      - 'PROJECT_ID=${_PROJECT_ID}' # This env var is often consumed by 'gcloud run deploy' internally
+      - 'PROJECT_ID=${_PROJECT_ID}'
 
+# --- ADD THIS SECTION ---
+options:
+  logging: CLOUD_LOGGING_ONLY # Directs all build logs to Cloud Logging
 
 # Substitutions: Define variables that Cloud Build will replace at runtime
 substitutions:
   _PROJECT_ID: fridgefeast-466610 # Your GCP Project ID
-  _GAR_LOCATION: europe-west3    # The region you chose for your Artifact Registry (e.g., europe-west3)
-  _SERVICE_NAME: fridge-feast-next-app # The name you want for your Cloud Run service (e.g., my-nextjs-app)
-  _REPO_NAME: nextjs-app-repo    # The name of your Artifact Registry repository (e.g., nextjs-app-repo)
-  _IMAGE_NAME: fridge-feast-app  # A specific name for the Docker image within your repository (e.g., my-nextjs-app-image)
+  _GAR_LOCATION: europe-west3    # The region you chose for your Artifact Registry
+  _SERVICE_NAME: fridge-feast-next-app # The name you want for your Cloud Run service
+  _REPO_NAME: nextjs-app-repo    # The name of your Artifact Registry repository
+  _IMAGE_NAME: fridge-feast-app  # A specific name for the Docker image within your repository
 
 # Optional: Cache node_modules to speed up builds
 # caches:
-#   - '$PROJECT_ID_REGION-docker.pkg.dev/cloud-builders/npm' # For npm, use 'yarn' for yarn
+#   - '$PROJECT_ID_REGION-docker.pkg.dev/cloud-builders/npm'
 #   paths:
 #     - /root/.npm
 #     - node_modules
