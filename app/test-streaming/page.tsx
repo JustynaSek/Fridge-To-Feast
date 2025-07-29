@@ -50,7 +50,6 @@ export default function TestStreamingPage() {
         accumulatedText += chunk;
         console.log('Received chunk:', chunk);
 
-        // Try to parse as JSON
         try {
           const recipes = JSON.parse(accumulatedText);
           if (Array.isArray(recipes)) {
@@ -58,7 +57,6 @@ export default function TestStreamingPage() {
             break;
           }
         } catch (e) {
-          // Continue accumulating
         }
       }
 
