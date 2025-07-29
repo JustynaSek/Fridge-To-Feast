@@ -1,61 +1,36 @@
-# Use the official Node.js 18 Alpine image as base
-FROM node:18-alpine AS base
+# Dockerfile
 
-# Install dependencies only when needed
-FROM base AS deps
-# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
-RUN apk add --no-cache libc6-compat
+# Stage 0: Install production dependencies
+FROM node:18-alpine AS deps
 WORKDIR /app
-
-# Install dependencies based on the preferred package manager
-COPY package.json package-lock.json* ./
+RUN apk add --no-cache libc6-compat
+COPY package.json package-lock.json ./
 RUN npm ci --only=production
 
-# Rebuild the source code only when needed
-FROM base AS builder
+# Stage 1: Build the Next.js application (including dev dependencies for build process)
+FROM node:18-alpine AS builder
 WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
+RUN apk add --no-cache libc6-compat
+COPY package.json package-lock.json ./
+RUN npm ci # Install all dependencies (dev and prod) for building
 COPY . .
-
-# Set environment variables for build
 ENV NEXT_TELEMETRY_DISABLED 1
 ENV NODE_ENV production
-
-# Build the application
 RUN npm run build
 
-# Production image, copy all the files and run next
-FROM base AS runner
+# Stage 2: Run the Next.js application (only production dependencies)
+FROM node:18-alpine AS runner
 WORKDIR /app
+RUN apk add --no-cache libc6-compat
 
-ENV NODE_ENV production
-ENV NEXT_TELEMETRY_DISABLED 1
-
-# Create a non-root user
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-
-# Copy the standalone output from the builder stage
+# Copy build output from the builder stage
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./package.json
+# If you have a public folder with static assets
 COPY --from=builder /app/public ./public
-
-# Set the correct permission for prerender cache
-RUN mkdir .next
-RUN chown nextjs:nodejs .next
-
-# Automatically leverage output traces to reduce image size
-# https://nextjs.org/docs/advanced-features/output-file-tracing
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-
-# Copy environment variables file if it exists
-COPY --from=builder /app/.env* ./
-
-USER nextjs
+# If you have specific scripts or server files, copy them as well
+COPY --from=builder /app/next.config.js ./next.config.js # Assuming you have next.config.js (or next.config.ts)
 
 EXPOSE 3000
-
-ENV PORT 3000
-ENV HOSTNAME "0.0.0.0"
-
-# Start the application
-CMD ["node", "server.js"] 
+CMD ["npm", "start"]
