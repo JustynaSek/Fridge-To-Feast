@@ -30,7 +30,7 @@ steps:
       - '--region'
       - '${_GAR_LOCATION}' # This will now also be us-central1
       - '--allow-unauthenticated'
-      - '--update-secrets=OPENAI_API_KEY=OPENAI_API_KEY:latest,GOOGLE_VISION_API_KEY=GOOGLE_VISION_API_KEY:latest'
+      - '--update-secrets=OPENAI_API_KEY=OPENAI_API_KEY:latest,GOOGLE_APPLICATION_CREDENTIALS=GOOGLE_APPLICATION_CREDENTIALS:latest'
       - '--cpu=2'
       - '--memory=4Gi'
       - '--timeout=900s'
