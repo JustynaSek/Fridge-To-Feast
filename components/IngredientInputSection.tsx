@@ -179,6 +179,21 @@ export default function IngredientInputSection() {
         const chunk = decoder.decode(value);
         accumulatedText += chunk;
         
+        // Check if the response contains an error message
+        if (accumulatedText.includes('"error"') || accumulatedText.includes('I\'m sorry') || accumulatedText.includes('cannot generate')) {
+          try {
+            const errorResponse = JSON.parse(accumulatedText);
+            if (errorResponse.error) {
+              throw new Error(errorResponse.error);
+            }
+          } catch (_parseError) {
+            // If it's not valid JSON but contains error keywords, treat as error
+            if (accumulatedText.includes('I\'m sorry') || accumulatedText.includes('cannot generate')) {
+              throw new Error("Unable to generate recipes with the provided ingredients. Please try different ingredients.");
+            }
+          }
+        }
+        
         // Try to parse as JSON (in case it's complete)
         try {
           const recipes = JSON.parse(accumulatedText);
@@ -199,7 +214,11 @@ export default function IngredientInputSection() {
         } else {
           throw new Error("Invalid response format");
         }
-      } catch (_e) {
+      } catch (_parseError) {
+        // Check if it's an error message
+        if (accumulatedText.includes('I\'m sorry') || accumulatedText.includes('cannot generate')) {
+          throw new Error("Unable to generate recipes with the provided ingredients. Please try different ingredients.");
+        }
         throw new Error("Failed to parse recipe response");
       }
       
