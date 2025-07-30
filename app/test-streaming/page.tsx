@@ -1,6 +1,5 @@
 "use client";
 import { useState } from 'react';
-import StreamingRecipeDisplay from '../../components/StreamingRecipeDisplay';
 import { Recipe } from '../../components/RecipeDisplay';
 
 export default function TestStreamingPage() {
@@ -8,7 +7,7 @@ export default function TestStreamingPage() {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [error, setError] = useState('');
 
-  const testStreaming = async () => {
+  const testRecipeGeneration = async () => {
     setIsStreaming(true);
     setError('');
     setRecipes([]);
@@ -33,45 +32,13 @@ export default function TestStreamingPage() {
         throw new Error(errorData.error || 'Failed to generate recipes');
       }
 
-      // Handle streaming response
-      const reader = response.body?.getReader();
-      if (!reader) {
-        throw new Error('No response body available');
+      const data = await response.json();
+      
+      if (!data.recipes || !Array.isArray(data.recipes)) {
+        throw new Error('Invalid response format from server');
       }
 
-      let accumulatedText = '';
-      const decoder = new TextDecoder();
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-
-        const chunk = decoder.decode(value);
-        accumulatedText += chunk;
-        console.log('Received chunk:', chunk);
-
-        try {
-          const recipes = JSON.parse(accumulatedText);
-          if (Array.isArray(recipes)) {
-            setRecipes(recipes);
-            break;
-          }
-        } catch (_e) {
-          // Continue reading chunks
-        }
-      }
-
-      // Final parse attempt
-      try {
-        const recipes = JSON.parse(accumulatedText);
-        if (Array.isArray(recipes)) {
-          setRecipes(recipes);
-        } else {
-          throw new Error('Invalid response format');
-        }
-      } catch (_e) {
-        throw new Error('Failed to parse recipe response');
-      }
+      setRecipes(data.recipes);
 
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Unknown error');
@@ -91,11 +58,11 @@ export default function TestStreamingPage() {
           <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow">
             <h2 className="text-xl font-semibold mb-4">Test Controls</h2>
             <button
-              onClick={testStreaming}
+              onClick={testRecipeGeneration}
               disabled={isStreaming}
               className="px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 disabled:opacity-50"
             >
-              {isStreaming ? 'Generating...' : 'Test Streaming'}
+              {isStreaming ? 'Generating...' : 'Test Recipe Generation'}
             </button>
           </div>
 
@@ -105,9 +72,7 @@ export default function TestStreamingPage() {
             </div>
           )}
 
-          <StreamingRecipeDisplay
-            isStreaming={isStreaming}
-          />
+
 
           {recipes.length > 0 && (
             <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow">

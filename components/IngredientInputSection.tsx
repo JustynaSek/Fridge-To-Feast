@@ -83,7 +83,7 @@ export default function IngredientInputSection() {
   const { t } = useLanguage();
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState<string | null>(null);
   const [inputMode, setInputMode] = useState<InputMode>("image");
   const [noRecipesFromImages, setNoRecipesFromImages] = useState(false);
   const [userPreferences, setUserPreferences] = useState<UserPreferences | null>(null);
@@ -138,7 +138,7 @@ export default function IngredientInputSection() {
   const handleTextSubmit = async (inputIngredients: string[]) => {
     console.log('📤 handleTextSubmit - userPreferences:', userPreferences);
     setLoading(true);
-    setError("");
+    setError(null);
     setRecipes([]);
     
     try {
@@ -146,12 +146,11 @@ export default function IngredientInputSection() {
         ingredients: inputIngredients,
         preferences: { 
           ...userPreferences,
-          language: t('common.language') // Add current language to preferences
+          language: t('common.language')
         }
       };
       console.log('📤 API request body:', requestBody);
       
-      // Use streaming API
       const res = await fetch("/api/generate-recipe-stream", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -163,64 +162,13 @@ export default function IngredientInputSection() {
         throw new Error(errorData.error || "Failed to generate recipes.");
       }
       
-      // Handle streaming response
-      const reader = res.body?.getReader();
-      if (!reader) {
-        throw new Error("No response body available");
+      const data = await res.json();
+      
+      if (!data.recipes || !Array.isArray(data.recipes)) {
+        throw new Error("Invalid response format from server.");
       }
       
-      let accumulatedText = '';
-      const decoder = new TextDecoder();
-      
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        
-        const chunk = decoder.decode(value);
-        accumulatedText += chunk;
-        
-        // Check if the response contains an error message
-        if (accumulatedText.includes('"error"') || accumulatedText.includes('I\'m sorry') || accumulatedText.includes('cannot generate')) {
-          try {
-            const errorResponse = JSON.parse(accumulatedText);
-            if (errorResponse.error) {
-              throw new Error(errorResponse.error);
-            }
-          } catch (_parseError) {
-            // If it's not valid JSON but contains error keywords, treat as error
-            if (accumulatedText.includes('I\'m sorry') || accumulatedText.includes('cannot generate')) {
-              throw new Error("Unable to generate recipes with the provided ingredients. Please try different ingredients.");
-            }
-          }
-        }
-        
-        // Try to parse as JSON (in case it's complete)
-        try {
-          const recipes = JSON.parse(accumulatedText);
-          if (Array.isArray(recipes)) {
-            setRecipes(recipes);
-            break;
-          }
-        } catch (_e) {
-          // Continue accumulating if JSON is incomplete
-        }
-      }
-      
-      // Final attempt to parse the complete response
-      try {
-        const recipes = JSON.parse(accumulatedText);
-        if (Array.isArray(recipes)) {
-          setRecipes(recipes);
-        } else {
-          throw new Error("Invalid response format");
-        }
-      } catch (_parseError) {
-        // Check if it's an error message
-        if (accumulatedText.includes('I\'m sorry') || accumulatedText.includes('cannot generate')) {
-          throw new Error("Unable to generate recipes with the provided ingredients. Please try different ingredients.");
-        }
-        throw new Error("Failed to parse recipe response");
-      }
+      setRecipes(data.recipes);
       
     } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : "Unknown error";
@@ -278,12 +226,12 @@ export default function IngredientInputSection() {
     setImageFiles([]);
     setImagePreviews([]);
     setIdentifiedIngredients([]);
+    setNoRecipesFromImages(false);
   }, []);
 
-  // Handle clear recipes
   const handleClearRecipes = useCallback(() => {
     setRecipes([]);
-    setNoRecipesFromImages(false);
+    setError(null);
   }, []);
 
   const handleDetectIngredients = async () => {
@@ -346,7 +294,7 @@ export default function IngredientInputSection() {
       console.log('📤 handleGenerateFromDetected - userPreferences:', userPreferences);
       setNoRecipesFromImages(false);
       setLoading(true);
-      setError("");
+      setError(null);
       setRecipes([]);
       
       try {
@@ -354,12 +302,11 @@ export default function IngredientInputSection() {
           ingredients: identifiedIngredients,
           preferences: { 
             ...userPreferences,
-            language: t('common.language') // Add current language to preferences
+            language: t('common.language')
           }
         };
         console.log('📤 API request body (detected):', requestBody);
         
-        // Use streaming API
         const res = await fetch("/api/generate-recipe-stream", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -371,51 +318,13 @@ export default function IngredientInputSection() {
           throw new Error(errorData.error || "Failed to generate recipes.");
         }
         
-        // Handle streaming response
-        const reader = res.body?.getReader();
-        if (!reader) {
-          throw new Error("No response body available");
+        const data = await res.json();
+        
+        if (!data.recipes || !Array.isArray(data.recipes)) {
+          throw new Error("Invalid response format from server.");
         }
         
-        let accumulatedText = '';
-        const decoder = new TextDecoder();
-        
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) break;
-          
-          const chunk = decoder.decode(value);
-          accumulatedText += chunk;
-          
-          // Try to parse as JSON (in case it's complete)
-          try {
-            const recipes = JSON.parse(accumulatedText);
-            if (Array.isArray(recipes)) {
-              setRecipes(recipes);
-              if (recipes.length === 0) {
-                setNoRecipesFromImages(true);
-              }
-              break;
-            }
-          } catch (_e) {
-            // Continue accumulating if JSON is incomplete
-          }
-        }
-        
-        // Final attempt to parse the complete response
-        try {
-          const recipes = JSON.parse(accumulatedText);
-          if (Array.isArray(recipes)) {
-            setRecipes(recipes);
-            if (recipes.length === 0) {
-              setNoRecipesFromImages(true);
-            }
-          } else {
-            throw new Error("Invalid response format");
-          }
-        } catch (_e) {
-          throw new Error("Failed to parse recipe response");
-        }
+        setRecipes(data.recipes);
         
       } catch (err: unknown) {
         const errorMessage = err instanceof Error ? err.message : "Unknown error";
@@ -665,8 +574,8 @@ export default function IngredientInputSection() {
               <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">
                                  {t("ui.yourRecipes")}
               </h2>
-              {/* onClear prop was removed from RecipeDisplay, so this button is removed */}
             </div>
+            
             <RecipeDisplay 
               recipes={recipes} 
               loading={loading} 

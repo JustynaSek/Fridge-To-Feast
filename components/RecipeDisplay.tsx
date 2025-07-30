@@ -569,7 +569,7 @@ export default function RecipeDisplay({
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors text-sm font-medium ${
                   actionFeedback[`${recipe.title}-print`] === t('recipes.actions.printed') 
                     ? 'bg-gray-500 text-white hover:bg-gray-600' 
-                    : 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600'
+                    : 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-200 hover:bg-blue-200 dark:hover:bg-blue-900/50'
                 }`}
                 title={actionFeedback[`${recipe.title}-print`] === t('recipes.actions.printed') ? t('recipes.actions.printed') : t('recipes.actions.print')}
               >

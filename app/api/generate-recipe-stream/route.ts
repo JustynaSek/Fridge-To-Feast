@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
   let preferences: UserPreferences | null = null;
   
   try {
-    console.log('🍳 Recipe generation streaming API called');
+    console.log('🍳 Recipe generation API called');
     
     // Parse request body with error handling
     let ingredients: string[] = [];
@@ -220,62 +220,81 @@ Return the response as a valid JSON array of recipes.`;
 
     console.log('🤖 Calling OpenAI API for recipe generation...');
     
-    // Create streaming response
-    const stream = new ReadableStream({
-      async start(controller) {
-        try {
-          // Call OpenAI with streaming
-          const stream = await openai.chat.completions.create({
-            model: "gpt-4o",
-            messages: [
-              { role: "system", content: systemPrompt },
-              { role: "user", content: userPrompt }
-            ],
-            stream: true,
-            max_tokens: 2048,
-            temperature: 0.7,
-          });
+    // Call OpenAI API (non-streaming)
+    const completion = await openai.chat.completions.create({
+      model: "gpt-4o",
+      messages: [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: userPrompt }
+      ],
+      max_tokens: 2048,
+      temperature: 0.7,
+    });
 
-          let accumulatedText = '';
-          
-          for await (const chunk of stream) {
-            const content = chunk.choices[0]?.delta?.content || '';
-            if (content) {
-              accumulatedText += content;
-              
-              // Send the chunk to the client
-              const encoder = new TextEncoder();
-              controller.enqueue(encoder.encode(content));
-            }
-          }
-          
-          console.log('✅ Recipe generation completed');
-          console.log('📊 Total response length:', accumulatedText.length);
-          console.log('⏱️ Generation time:', Date.now() - startTime, 'ms');
-          
-        } catch (error) {
-          console.error('❌ Error during streaming:', error);
-          
-          // Send error message to client
-          const encoder = new TextEncoder();
-          const errorMessage = JSON.stringify({ 
-            error: "Failed to generate recipe. Please try again." 
-          });
-          controller.enqueue(encoder.encode(errorMessage));
-        } finally {
-          controller.close();
+    const responseContent = completion.choices[0]?.message?.content;
+    
+    if (!responseContent) {
+      throw new Error("No response received from OpenAI");
+    }
+
+    console.log('📄 Raw OpenAI response:', responseContent);
+
+    // Check if the response contains an error message
+    if (responseContent.includes('"error"') || responseContent.includes('I\'m sorry') || responseContent.includes('cannot generate')) {
+      try {
+        const errorResponse = JSON.parse(responseContent);
+        if (errorResponse.error) {
+          throw new Error(errorResponse.error);
+        }
+      } catch (_parseError) {
+        if (responseContent.includes('I\'m sorry') || responseContent.includes('cannot generate')) {
+          throw new Error("Unable to generate recipes with the provided ingredients. Please try different ingredients.");
         }
       }
-    });
+    }
 
-    // Return streaming response
-    return new Response(stream, {
-      headers: {
-        'Content-Type': 'text/plain; charset=utf-8',
-        'Cache-Control': 'no-cache',
-        'Connection': 'keep-alive',
-      },
-    });
+    // Parse the JSON response
+    let recipes;
+    try {
+      // Try to extract JSON array from the response
+      const jsonMatch = responseContent.match(/\[[\s\S]*\]/);
+      if (jsonMatch) {
+        recipes = JSON.parse(jsonMatch[0]);
+      } else {
+        // If no array found, try to parse the entire response
+        recipes = JSON.parse(responseContent);
+      }
+    } catch (parseError) {
+      console.error('❌ Failed to parse OpenAI response as JSON:', parseError);
+      console.error('❌ Response content:', responseContent);
+      throw new Error("Failed to parse recipe response. Please try again.");
+    }
+
+    // Validate recipes
+    if (!Array.isArray(recipes) || recipes.length === 0) {
+      throw new Error("No valid recipes were generated. Please try different ingredients.");
+    }
+
+    // Validate each recipe has required fields
+    const validRecipes = recipes.filter(recipe => 
+      recipe && 
+      recipe.title && 
+      recipe.ingredients && 
+      Array.isArray(recipe.ingredients) &&
+      recipe.instructions && 
+      Array.isArray(recipe.instructions)
+    );
+
+    if (validRecipes.length === 0) {
+      throw new Error("Generated recipes are missing required information. Please try again.");
+    }
+
+    console.log('✅ Recipe generation completed');
+    console.log('📊 Total recipes generated:', validRecipes.length);
+    console.log('⏱️ Generation time:', Date.now() - startTime, 'ms');
+
+    // Return the recipes
+    return NextResponse.json({ recipes: validRecipes });
 
   } catch (error) {
     console.error('❌ Recipe generation error:', error);
