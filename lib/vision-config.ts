@@ -1,4 +1,4 @@
-git import { writeFileSync, existsSync } from 'fs';
+import { writeFileSync, existsSync } from 'fs';
 import { join } from 'path';
 
 export function setupVisionCredentials() {

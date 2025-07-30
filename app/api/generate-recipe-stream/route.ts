@@ -85,13 +85,22 @@ export async function POST(req: NextRequest) {
     }
 
     // Build personalized system prompt based on user preferences
-    let systemPrompt = `You are an expert, creative, and friendly chef named "Chef Feast." Your goal is to help the user cook delicious meals using available ingredients, respecting their preferences and dietary needs.
+    let systemPrompt = `You are an cuisine expert, creative, and friendly. Your goal is to help the user cook delicious meals using available ingredients, respecting their preferences and dietary needs.
 
-IMPORTANT: You MUST generate recipes even for common ingredients like onion, potato, banana, chicken, garlic, tomato, etc. These are excellent ingredients for cooking!
+🚨 CRITICAL LANGUAGE REQUIREMENT: You MUST respond ENTIRELY in ${preferences?.language || 'English'} language. This includes:
+- Recipe titles
+- Recipe descriptions  
+- All ingredient names
+- All cooking instructions
+- Any additional text or explanations
+- Measurements and units
+- Cooking terms and techniques
 
-CRITICAL: NEVER ask for more ingredients or say "please provide additional ingredients." ALWAYS generate at least one complete recipe using the provided ingredients. If the ingredient list seems incomplete, suggest logical additions within the recipe itself, but always return a complete recipe.
+IMPORTANT: You MUST generate recipes even for common ingredients like onion, potato, banana, chicken, garlic, tomato, etc if user provided them.
 
-CRITICAL: You MUST respond in ${preferences?.language || 'English'} language. All recipe titles, descriptions, and instructions must be in ${preferences?.language || 'English'}.
+CRITICAL: NEVER ask for more ingredients or say "please provide additional ingredients." 
+ALWAYS generate at least one complete recipe using the provided ingredients.
+ If the ingredient list seems incomplete, suggest logical additions within the recipe itself, but always return a complete recipe.
 
 CRITICAL: Instructions must be an array of strings, not a single string. Each step should be a separate array element.
 
@@ -140,8 +149,10 @@ Return a JSON array of recipes with this exact format:
       const language = preferences.language || 'English';
 
       systemPrompt += `\n\n=== USER PREFERENCES ===
-LANGUAGE: ${language}
-CRITICAL: You MUST respond in ${language} language.
+🚨 LANGUAGE REQUIREMENT: ${language}
+🚨 CRITICAL: You MUST respond ENTIRELY in ${language} language. This is NON-NEGOTIABLE.
+🚨 ALL content including titles, descriptions, ingredients, and instructions MUST be in ${language}.
+
 DIETARY RESTRICTIONS: ${dietaryRestrictions.length > 0 ? dietaryRestrictions.join(', ') : 'None'}
 HEALTH CONDITIONS: ${healthConditions.length > 0 ? healthConditions.join(', ') : 'None'}
 ALLERGIES: ${allergies.length > 0 ? allergies.join(', ') : 'None'}
@@ -177,7 +188,7 @@ ${healthConditions.includes('Celiac Disease') ? '🌾 GLUTEN-FREE: Strictly avoi
 ${healthConditions.includes('Lactose Intolerance') ? '🥛 LACTOSE-FREE: Avoid dairy or suggest lactose-free alternatives.' : ''}
 
 === COOKING INSTRUCTIONS ===
-1. Based on the provided ingredients and the user's preferences above, suggest 2-3 unique and practical recipes.
+1. Based on the provided ingredients and the user's preferences above, suggest 2-3 unique, practical and not poisones recipes.
 2. For each recipe, provide:
    a. A creative and enticing title.
    b. A brief, inviting description.
@@ -188,11 +199,14 @@ ${healthConditions.includes('Lactose Intolerance') ? '🥛 LACTOSE-FREE: Avoid d
 4. Adapt spice level, flavor preferences, and cuisines as much as possible.
 5. Consider the user's cooking skill level, available equipment, and time constraints.
 6. EQUIPMENT GUIDELINES: If only basic equipment is available, focus on recipes that use stovetop, oven, microwave, and basic utensils. Avoid recipes requiring specialized equipment like food processors, stand mixers, or air fryers unless specifically listed as available.
-7. CRITICAL: Instructions must be an array of strings, each step as a separate element.`;
+7. CRITICAL: Instructions must be an array of strings, each step as a separate element.
+8. 🚨 FINAL LANGUAGE REMINDER: You MUST respond ENTIRELY in ${language} language. This includes ALL text in your response - titles, descriptions, ingredients, instructions, measurements, and any other content.`;
     }
 
     // Create user prompt with ingredients
     const userPrompt = `Please generate delicious recipes using these ingredients: ${ingredients.join(', ')}.
+
+🚨 IMPORTANT: Respond ENTIRELY in ${preferences?.language || 'English'} language.
 
 Remember:
 - Use the provided ingredients as the main components
@@ -200,6 +214,7 @@ Remember:
 - Provide clear, step-by-step instructions
 - Include realistic prep and cook times
 - Make the recipes practical and achievable
+- ALL content must be in ${preferences?.language || 'English'} language
 
 Return the response as a valid JSON array of recipes.`;
 
