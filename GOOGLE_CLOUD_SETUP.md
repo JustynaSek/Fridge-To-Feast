@@ -84,7 +84,7 @@ echo $VISION_SERVICE_ACCOUNT_BASE64
 echo -n "your-openai-api-key" | gcloud secrets create OPENAI_API_KEY --data-file=-
 
 # Create the Vision service account secret
-echo -n "$VISION_SERVICE_ACCOUNT_BASE64" | gcloud secrets create VISION_SERVICE_ACCOUNT_BASE64 --data-file=-
+echo -n "$.\f" | gcloud secrets create VISION_SERVICE_ACCOUNT_BASE64 --data-file=-
 ```
 
 ### 2. Grant Access to Cloud Run Service

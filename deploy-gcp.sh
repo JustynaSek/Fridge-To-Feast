@@ -226,7 +226,6 @@ main() {
     log_info "Don't forget to set your environment variables in the Google Cloud Console:"
     log_info "- OPENAI_API_KEY"
     log_info "- GOOGLE_APPLICATION_CREDENTIALS (for image recognition)"
-    log_info "- VISION_SERVICE_ACCOUNT_BASE64 (alternative for image recognition)"
 }
 
 # Run the main function

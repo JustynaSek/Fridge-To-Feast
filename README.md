@@ -64,7 +64,7 @@ Transform your ingredients into delicious recipes with AI-powered cooking sugges
    npm install
    ```
 
-3. **Set up environment variables**
+git 3. **Set up environment variables**
    ```bash
    cp .env.example .env.local
    ```
@@ -74,12 +74,8 @@ Transform your ingredients into delicious recipes with AI-powered cooking sugges
    # Required for recipe generation
    OPENAI_API_KEY=your_openai_api_key_here
    
-   # Optional for image recognition (choose one method)
-   # Method 1: Service account file path (local development)
+   # Required for image recognition
    GOOGLE_APPLICATION_CREDENTIALS=/path/to/vision-service-account.json
-   
-   # Method 2: Base64 encoded service account (production)
-   VISION_SERVICE_ACCOUNT_BASE64=base64_encoded_service_account_json
    ```
 
 4. **Run the development server**
@@ -161,15 +157,8 @@ Transform your ingredients into delicious recipes with AI-powered cooking sugges
 # Required for recipe generation
 OPENAI_API_KEY=your_openai_api_key
 
-# Optional for image recognition (choose one method)
-# Method 1: Service account file path (local development)
+# Required for image recognition
 GOOGLE_APPLICATION_CREDENTIALS=/path/to/vision-service-account.json
-
-# Method 2: Base64 encoded service account (production)
-VISION_SERVICE_ACCOUNT_BASE64=base64_encoded_service_account_json
-
-# Optional for production
-NEXT_PUBLIC_APP_URL=https://your-domain.com
 ```
 
 ### User Preferences
@@ -210,7 +199,7 @@ The app supports comprehensive user preferences:
 
 2. **Configure Environment Variables**
    - Add `OPENAI_API_KEY` in Vercel dashboard
-   - Add `GOOGLE_APPLICATION_CREDENTIALS` or `VISION_SERVICE_ACCOUNT_BASE64` if using image recognition
+   - Add `GOOGLE_APPLICATION_CREDENTIALS` for image recognition
    - Set other optional variables
 
 3. **Deploy**
@@ -237,12 +226,8 @@ Ensure these environment variables are set in production:
 # Required for recipe generation
 OPENAI_API_KEY=sk-...
 
-# Optional for image recognition (choose one method)
-# Method 1: Service account file path
+# Required for image recognition
 GOOGLE_APPLICATION_CREDENTIALS=/path/to/vision-service-account.json
-
-# Method 2: Base64 encoded service account
-VISION_SERVICE_ACCOUNT_BASE64=base64_encoded_service_account_json
 ```
 
 ## 📊 Performance & Optimization
