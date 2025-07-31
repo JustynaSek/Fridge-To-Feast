@@ -453,21 +453,21 @@ export default function IngredientInputSection() {
                 <div className="space-y-4">
                   <div className="flex justify-center">
                     <button
-                      className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold px-8 py-3 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:transform-none"
+                      className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold px-6 sm:px-8 py-4 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:transform-none text-base sm:text-lg"
                       onClick={handleDetectIngredients}
                       disabled={detectLoading}
                     >
                       {detectLoading ? (
                         <div className="flex items-center gap-2">
-                          <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                                                     <span>{t("ui.detectingIngredients")}</span>
+                          <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                          <span className="whitespace-nowrap">{t("ui.detectingIngredients")}</span>
                         </div>
                       ) : (
                         <div className="flex items-center gap-2">
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
-                                                     <span>{t("ui.detectIngredients")}</span>
+                          <span className="whitespace-nowrap">{t("ui.detectIngredients")}</span>
                         </div>
                       )}
                     </button>
@@ -533,15 +533,15 @@ export default function IngredientInputSection() {
                         </div>
                         
                         <button
-                          className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold px-6 py-3 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-200 disabled:opacity-50"
+                          className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold px-6 py-4 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-200 disabled:opacity-50 text-base sm:text-lg"
                           onClick={handleGenerateFromDetected}
                           disabled={identifiedIngredients.length === 0}
                         >
                           <div className="flex items-center justify-center gap-2">
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                             </svg>
-                                                         <span>{t("ui.generateRecipe")}</span>
+                            <span className="whitespace-nowrap">{t("ui.generateRecipe")}</span>
                           </div>
                         </button>
                       </div>

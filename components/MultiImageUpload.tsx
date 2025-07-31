@@ -1,5 +1,5 @@
 "use client";
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import { useLanguage } from "./LanguageContext";
 import { smartCompress } from "../utils/imageCompression";
 
@@ -28,9 +28,14 @@ export default function MultiImageUpload({
   const maxFileSize = 25 * 1024 * 1024; // 25MB max file size
   const maxFiles = 5; // Maximum number of files
 
-  // Check if device supports camera
-  const isMobile = typeof window !== 'undefined' && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-  const supportsCamera = typeof window !== 'undefined' && 'mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices;
+  // Check if device supports camera - use state to avoid hydration mismatch
+  const [isMobile, setIsMobile] = useState(false);
+  const [supportsCamera, setSupportsCamera] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+    setSupportsCamera('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices);
+  }, []);
 
   const processFiles = useCallback(async (fileList: File[]) => {
     // Prevent processing if already processing

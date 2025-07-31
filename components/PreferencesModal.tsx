@@ -574,7 +574,7 @@ export default function PreferencesModal({ onClose, onPreferencesSaved }: Prefer
         </div>
 
         {/* Footer */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 sm:p-6 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 gap-4 min-h-[90px]">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 sm:p-6 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 gap-4">
           <div className="text-xs text-gray-500 dark:text-gray-400 order-2 sm:order-1">
             <span className="hidden sm:inline">{t("preferences.pressEscOrClickOutsideToClose")}</span>
             <span className="sm:hidden">
@@ -590,19 +590,19 @@ export default function PreferencesModal({ onClose, onPreferencesSaved }: Prefer
           <div className="flex flex-wrap gap-2 sm:gap-3 order-1 sm:order-2 w-full sm:w-auto justify-center sm:justify-end">
             <button
               onClick={() => setPreferences(defaultPreferences)}
-              className="px-3 sm:px-4 py-2.5 text-xs sm:text-sm text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200 bg-white dark:bg-gray-600 rounded-lg border border-gray-200 dark:border-gray-500 shadow-sm"
+              className="px-4 py-3 text-sm text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200 bg-white dark:bg-gray-600 rounded-lg border border-gray-200 dark:border-gray-500 shadow-sm whitespace-nowrap"
             >
               {t("preferences.resetToDefaults")}
             </button>
             <button
               onClick={onClose}
-              className="px-4 sm:px-6 py-2.5 text-xs sm:text-sm border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-600 bg-white dark:bg-gray-600 shadow-sm"
+              className="px-4 py-3 text-sm border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-600 bg-white dark:bg-gray-600 shadow-sm whitespace-nowrap"
             >
               {t("common.cancel")}
             </button>
             <button
               onClick={savePreferences}
-              className="px-4 sm:px-6 py-2.5 text-xs sm:text-sm bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors font-medium shadow-sm"
+              className="px-4 py-3 text-sm bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors font-medium shadow-sm whitespace-nowrap"
             >
               {t("preferences.savePreferences")}
             </button>

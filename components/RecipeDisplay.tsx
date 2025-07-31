@@ -420,7 +420,7 @@ export default function RecipeDisplay({
       {/* Recipe Cards */}
       <div className="space-y-6">
         {recipes.map((recipe, idx) => (
-          <div key={idx} className="bg-gradient-to-br from-white to-orange-50 dark:from-gray-700 dark:to-gray-800 rounded-2xl p-6 shadow-lg border border-orange-200 dark:border-gray-600 hover:shadow-xl transition-all duration-200">
+          <div key={idx} className="bg-gradient-to-br from-white to-orange-50 dark:from-gray-700 dark:to-gray-800 rounded-2xl p-4 sm:p-6 shadow-lg border border-orange-200 dark:border-gray-600 hover:shadow-xl transition-all duration-200 max-w-4xl mx-auto w-full">
             {/* Recipe Header */}
             <div className="mb-4">
               <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
@@ -507,19 +507,19 @@ export default function RecipeDisplay({
                 </button>
                 
                 <div className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                  expandedInstructions[recipe.title] ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                  expandedInstructions[recipe.title] ? 'max-h-[70vh] opacity-100' : 'max-h-0 opacity-0'
                 }`}>
-                  <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-4">
+                  <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 sm:p-6 max-h-[60vh] overflow-y-auto">
                     {Array.isArray(recipe.instructions) ? (
-                      <ol className="list-decimal list-inside space-y-3 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                      <ol className="list-decimal list-inside space-y-4 text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
                         {recipe.instructions.map((step, index) => (
-                          <li key={index} className="pl-2">
+                          <li key={index} className="pl-3 sm:pl-4">
                             {step}
                           </li>
                         ))}
                       </ol>
                     ) : (
-                      <div className="whitespace-pre-line text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                      <div className="whitespace-pre-line text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
                         {recipe.instructions}
                       </div>
                     )}
